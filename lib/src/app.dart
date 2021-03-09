@@ -18,6 +18,11 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: BlocBuilder<AppCubit, AppState>(
+        buildWhen: (previous, current) {
+          final isDiff = previous.locale != current.locale ||
+              previous.themeMode != current.themeMode;
+          return isDiff;
+        },
         builder: (ctx, state) {
           return MaterialApp(
             localizationsDelegates: [
@@ -31,7 +36,6 @@ class MyApp extends StatelessWidget {
             themeMode: state.themeMode,
             theme: lightTheme,
             darkTheme: darkTheme,
-            title: 'Flutter Demo',
           );
         },
       ),

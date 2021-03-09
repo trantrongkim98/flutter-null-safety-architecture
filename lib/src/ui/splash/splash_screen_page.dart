@@ -13,6 +13,7 @@ class SplashScreenPage extends StatefulWidget {
 }
 
 class _SplashScreenPageState extends State<SplashScreenPage> {
+  int _count = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,11 +53,24 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
 
   Widget _switchTheme() {
     return RawMaterialButton(
-      onPressed: context.appCubit.onSwitchTheme,
+      key: ValueKey('switchTheme'),
+      onPressed: () {
+        context.appCubit.onSwitchTheme();
+        setState(() {
+          _count++;
+        });
+      },
       child: Container(
         height: 60,
         width: 100,
         color: Theme.of(context).buttonColor,
+        child: Center(
+          child: Text(
+            '$_count',
+            style: Theme.of(context).textTheme.button,
+            key: ValueKey('counterKey'),
+          ),
+        ),
       ),
     );
   }
