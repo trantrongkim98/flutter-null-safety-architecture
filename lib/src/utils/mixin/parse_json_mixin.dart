@@ -9,7 +9,7 @@ abstract class ParseJsonMixin {
       final json = convert.jsonDecode(response.body);
       return json;
     } catch (e) {
-      return Map<String, dynamic>();
+      return {'code': -1002, 'message': e.toString()};
     }
   }
 
@@ -19,7 +19,7 @@ abstract class ParseJsonMixin {
       final json = convert.jsonDecode(str);
       return json;
     } catch (e) {
-      return Map<String, dynamic>();
+      return {'code': -1002, 'message': e.toString()};
     }
   }
 }

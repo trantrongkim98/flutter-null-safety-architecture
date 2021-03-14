@@ -1,4 +1,6 @@
 // ignore: prefer_double_quotes
+import 'dart:async';
+
 import 'package:http/http.dart' as http;
 import 'package:flutterarchitecture/src/utils/mixin/parse_json_mixin.dart';
 
@@ -15,37 +17,60 @@ import 'package:flutterarchitecture/src/utils/mixin/parse_json_mixin.dart';
 ///     }
 ///   }
 /// }
-abstract class Service with ParseJsonMixin {
+class Service with ParseJsonMixin {
+  const Service();
+
   /// [get] method Get
   Future<dynamic>? get({
     String path = '',
     Map<String, String>? headers,
     bool isToken = false,
+    http.Client? client,
   }) async {
-    final client = http.Client();
+    final _client = client ?? http.Client();
     try {
-      final uri = Uri.dataFromString(path);
-      final response = await client.get(uri, headers: headers);
-      return parseResponse(response);
-    } on http.ClientException catch (_) {
-      return null;
+      final uri = Uri.https('', path);
+      final response = await _client
+          .get(uri, headers: headers)
+          .timeout(Duration(seconds: 10));
+      if (response.statusCode == 200) {
+        return parseResponse(response);
+      } else {
+        return {'code': response.statusCode, 'message': response.body};
+      }
+    } on TimeoutException catch (e) {
+      return {'code': -1001, 'message': e.message};
+    } on http.ClientException catch (e) {
+      return {'code': -1002, 'message': e.message};
     } finally {
-      client.close();
+      _client.close();
     }
   }
 
   ///[post] method post
-  Future<dynamic>? post({String url = ''}) async {
-    final client = http.Client();
+  Future<dynamic>? post({
+    String url = '',
+    Object? body,
+    http.Client? client,
+    Map<String, String>? headers,
+  }) async {
+    final _client = client ?? http.Client();
     try {
-      final uri = Uri.dataFromString(url);
-      final response = await client.post(uri);
-      return parseResponse(response);
-    } catch (e) {
-      print(e);
-      return null;
+      final uri = Uri.https('', url);
+      final response = await _client
+          .post(uri, headers: headers, body: body)
+          .timeout(Duration(seconds: 10));
+      if (response.statusCode == 200) {
+        return parseResponse(response);
+      } else {
+        return {'code': response.statusCode, 'message': response.body};
+      }
+    } on TimeoutException catch (e) {
+      return {'code': -1001, 'message': e.message};
+    } on http.ClientException catch (e) {
+      return {'code': -1002, 'message': e.message};
     } finally {
-      client.close();
+      _client.close();
     }
   }
 }
