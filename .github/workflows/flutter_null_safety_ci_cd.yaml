@@ -1,6 +1,16 @@
 name: Flutter Null Safety Architecture CICD
 
-on: [push]
+on: 
+  push:
+    branches:
+    - main
+    - develop
+    - 'feat/**'
+    - 'hotfix/**'
+  - pull_request:
+    branches:
+    - main
+    - develop
 
 jobs:
     test:
