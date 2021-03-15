@@ -26,8 +26,8 @@ jobs:
           with:
             flutter-version: '2.0.1'
         - run: |
-          echo "Hello ${{ github.event.inputs.name }}!"
-          echo "- in ${{ github.event.inputs.home }}!"
+            echo "Hello ${{ github.event.inputs.name }}!"
+            echo "- in ${{ github.event.inputs.home }}!"
         - run: flutter clean
         - run: flutter packages get
         - run: make unit_test
