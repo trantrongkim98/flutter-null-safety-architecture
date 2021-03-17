@@ -22,7 +22,7 @@ jobs:
           run: echo "$GITHUB_CONTEXT"
         - name: Dump secrec context
           env:
-            SECREC_CONTEXT: ${{toJSON(secrecs)}}
+            SECREC_CONTEXT: ${{toJSON(secrec)}}
           run:  echo "$SECREC_CONTEXT"
         - name: Dump job context
           env:
