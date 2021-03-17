@@ -18,7 +18,7 @@ jobs:
       steps:
         - name: secrec
           id: secret
-          run: echo '::set-output name=secret::${{secrets.SECRET}}'
+          run: echo '::set-output name=secret::${{secrets.SIGN_IN_KEY}}'
     # test:
     #   runs-on: macos-latest
     #   steps:
