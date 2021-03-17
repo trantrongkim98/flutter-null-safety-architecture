@@ -17,6 +17,7 @@ jobs:
       runs-on: macos-latest
       steps:
         - run: echo "Deploying to production server on branch $GITHUB_REF"
+        - run: echo "earew"
     # test:
     #   runs-on: macos-latest
     #   steps:
