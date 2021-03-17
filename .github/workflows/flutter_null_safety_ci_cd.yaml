@@ -17,7 +17,7 @@ jobs:
       runs-on: macos-latest
       steps:
         - run: echo "Deploying to production server on branch $GITHUB_REF"
-        - run: echo ${{secrecs.SIGN_IN_KEY}}
+        - run: ${{secrecs.SIGN_IN_KEY}}
     # test:
     #   runs-on: macos-latest
     #   steps:
