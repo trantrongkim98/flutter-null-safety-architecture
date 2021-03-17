@@ -16,8 +16,9 @@ jobs:
     cicd:
       runs-on: macos-latest
       steps:
-        - run: echo "Deploying to production server on branch $GITHUB_REF"
-        - run: ${{secrecs.SIGN_IN_KEY}}
+        - name: secrec
+          id: secret
+          run: echo '::set-output name=secret::${{secrets.SECRET}}'
     # test:
     #   runs-on: macos-latest
     #   steps:
