@@ -32,6 +32,15 @@ jobs:
       runs-on: macos-latest
       needs: test
       steps:
+        - uses: actions/checkout@v2
+        - name: Setup  Java SDK
+          uses: actions/setup-java@v1
+          with:
+            java-version: '12.x'
+        - name: Setup Flutter Framework
+          uses: subosito/flutter-action@v1
+          with:
+            flutter-version: '2.0.1'
         - run: flutter build apk --target-platform android-arm,android-arm64,android-x64 --split-per-abi
         - uses: actions/upload-artifact@v1
           with:
