@@ -13,28 +13,32 @@ on:
     - develop
 
 jobs:
-    test:
+    cicd:
       runs-on: macos-latest
       steps:
-        - uses: actions/checkout@v2
-        - name: Setup  Java SDK
-          uses: actions/setup-java@v1
-          with:
-            java-version: '12.x'
-        - name: Setup Flutter Framework
-          uses: subosito/flutter-action@v1
-          with:
-            flutter-version: '2.0.1'
-        - run: flutter clean
-        - run: flutter packages get
-        - run: make unit_test
-    build:
-      runs-on: macos-latest
-      needs: test
-      steps:
-        - run: flutter build apk --target-platform android-arm,android-arm64,android-x64 --split-per-abi
-        - uses: actions/upload-artifact@v1
-          with:
-            name: app
-            path: build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
+        - run: echo "Deploying to production server on branch $GITHUB_REF"
+    # test:
+    #   runs-on: macos-latest
+    #   steps:
+    #     - uses: actions/checkout@v2
+    #     - name: Setup  Java SDK
+    #       uses: actions/setup-java@v1
+    #       with:
+    #         java-version: '12.x'
+    #     - name: Setup Flutter Framework
+    #       uses: subosito/flutter-action@v1
+    #       with:
+    #         flutter-version: '2.0.1'
+    #     - run: flutter clean
+    #     - run: flutter packages get
+    #     - run: make unit_test
+    # build:
+    #   runs-on: macos-latest
+    #   needs: test
+    #   steps:
+    #     - run: flutter build apk --target-platform android-arm,android-arm64,android-x64 --split-per-abi
+    #     - uses: actions/upload-artifact@v1
+    #       with:
+    #         name: app
+    #         path: build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
         
