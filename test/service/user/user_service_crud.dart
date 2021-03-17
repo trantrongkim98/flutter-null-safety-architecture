@@ -3,7 +3,6 @@
 import 'package:flutterarchitecture/src/model/remote/user/sign_in.dart';
 import 'package:flutterarchitecture/src/service/service.dart';
 import 'package:flutterarchitecture/src/service/user/user_service.dart';
-import 'package:flutterarchitecture/src/utils/mixin/parse_json_mixin.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
