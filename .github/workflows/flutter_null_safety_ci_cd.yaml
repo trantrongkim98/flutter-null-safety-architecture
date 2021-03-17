@@ -20,6 +20,10 @@ jobs:
           env:
             GITHUB_CONTEXT: ${{ toJSON(github) }}
           run: echo "$GITHUB_CONTEXT"
+        - name: Dump secrec context
+          env:
+            SECREC_CONTEXT: ${{toJSON(secrecs)}}
+          run:  echo "$SECREC_CONTEXT"
         - name: Dump job context
           env:
             JOB_CONTEXT: ${{ toJSON(job) }}
