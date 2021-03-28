@@ -6,7 +6,6 @@ import "package:flutter_bloc/flutter_bloc.dart";
 import "package:flutterarchitecture/src/bloc/app_bloc/app_state.dart";
 import 'package:flutterarchitecture/src/model/remote/user/sign_in.dart';
 import 'package:flutterarchitecture/src/repository/user/user_repository.dart';
-import 'package:flutterarchitecture/src/service/user/user_service.dart';
 
 /// [AppCubit] this's Cubit of App
 class AppCubit extends Cubit<AppState> {

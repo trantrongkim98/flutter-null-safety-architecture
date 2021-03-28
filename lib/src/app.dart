@@ -32,11 +32,12 @@ class MyApp extends StatelessWidget {
                   GlobalCupertinoLocalizations.delegate,
                 ],
                 initialRoute: RouteUtil.initial,
-                routes: RouteUtil.routes,
+                // routes: RouteUtil.routes,
                 locale: state.locale,
                 themeMode: state.themeMode,
                 theme: lightTheme,
                 darkTheme: darkTheme,
+                onGenerateRoute: RouteUtil.onGenerateRoute,
               );
             },
           ),

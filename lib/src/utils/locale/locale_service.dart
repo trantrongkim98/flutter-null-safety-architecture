@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterarchitecture/src/assets/locale/en_US.dart';
-import 'package:flutterarchitecture/src/assets/locale/vi_VN.dart';
+import 'package:flutterarchitecture/src/utils/locale/locale/en_US.dart';
+import 'package:flutterarchitecture/src/utils/locale/locale/vi_VN.dart';
 
 /// [LocaleService] class locale service of app
 class LocaleService {

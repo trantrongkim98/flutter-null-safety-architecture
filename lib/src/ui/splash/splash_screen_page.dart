@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterarchitecture/src/ui/widgets/app_header.dart';
+import 'package:flutterarchitecture/src/ui/widgets/page_route/scale_page_route.dart';
+import 'package:flutterarchitecture/src/utils/colors.dart';
 import 'package:flutterarchitecture/src/utils/extention/context_extension.dart';
 import 'package:flutterarchitecture/src/utils/extention/string_extension.dart';
 
@@ -55,10 +57,11 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     return RawMaterialButton(
       key: ValueKey('switchTheme'),
       onPressed: () {
-        context.appCubit.onSwitchTheme();
-        setState(() {
-          _count++;
-        });
+        Navigator.of(context).pushNamed('red');
+        // context.appCubit.onSwitchTheme();
+        // setState(() {
+        //   _count++;
+        // });
       },
       child: Container(
         height: 60,
