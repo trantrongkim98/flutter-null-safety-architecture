@@ -5,3 +5,5 @@
 /pubspec.lock
 /.vscode
 /coverage
+/.DS_Store
+/ios/Runner.xcodeproj/project.pbxproj
